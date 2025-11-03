@@ -1,12 +1,14 @@
 name: CI/CD Pipeline
 
-# Solo se ejecuta manualmente o por push/PR, SIN programación automática
+# Se ejecuta en push/PR a main, manualmente o en un horario programado
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:  # Permite ejecución manual desde GitHub
+  schedule:
+    - cron: '0 2 * * *' # Se ejecuta a las 2 AM UTC todos los días
 
 jobs:
   test-scripts:
@@ -19,10 +21,10 @@ jobs:
         run: chmod +x playground-linux/*.sh
       
       - name: Run grep demo
-        run: ./playground-linux/grep_demo.sh
+        run: ./playground-linux/grep_demo.sh "devops" playground-linux/errores.txt
       
       - name: Run permissions demo
-        run: ./playground-linux/permisos.sh
+        run: ./playground-linux/permisos.sh playground-linux/errores.txt 644
       
       - name: Run cron demo
         run: ./playground-linux/cron_demo.sh

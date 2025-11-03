@@ -1,5 +1,8 @@
 #!/bin/bash
-# cron_demo.sh - Añade una tarea a cron que muestra la fecha cada minuto
+# cron_demo.sh - Simula la ejecución de una tarea programada (cron job)
 
-echo "* * * * * date >> ~/cron_log.txt" | crontab -
-echo "Tarea añadida a cron. Se guardará la fecha en ~/cron_log.txt cada minuto."
+echo "Simulando la ejecución de la tarea CRON..."
+# En un pipeline de CI, no modificamos crontab.
+# En su lugar, simulamos la acción que el cron job haría.
+echo "Tarea ejecutada en: $(date)" >> cron_simulation_log.txt
+echo "Simulación completada. Revisa 'cron_simulation_log.txt' para ver el resultado."

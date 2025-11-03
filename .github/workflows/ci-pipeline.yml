@@ -3,9 +3,9 @@ name: CI/CD Pipeline
 # Se ejecuta en push/PR a main, manualmente o en un horario programado
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
   workflow_dispatch:  # Permite ejecución manual desde GitHub
   schedule:
     - cron: '0 2 * * *' # Se ejecuta a las 2 AM UTC todos los días

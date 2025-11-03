@@ -1,0 +1,15 @@
+# Especifica la versión del formato de archivo de Compose
+version: '3.8'
+
+# Define los 'servicios' o contenedores que componen tu aplicación
+services:
+  # 'playground' es el nombre que le damos a nuestro servicio
+  playground:
+    # Construye la imagen a partir del Dockerfile en el directorio actual
+    build: .
+    # Mantiene el contenedor corriendo para que podamos interactuar con él
+    stdin_open: true
+    tty: true
+    # Mapea el directorio actual de tu máquina al directorio /app del contenedor
+    volumes:
+      - .:/app

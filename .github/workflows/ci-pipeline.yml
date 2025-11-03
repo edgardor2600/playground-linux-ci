@@ -1,0 +1,78 @@
+name: CI/CD Pipeline
+
+# Solo se ejecuta manualmente o por push/PR, SIN programación automática
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Permite ejecución manual desde GitHub
+
+jobs:
+  test-scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Make scripts executable
+        run: chmod +x playground-linux/*.sh
+      
+      - name: Run grep demo
+        run: ./playground-linux/grep_demo.sh
+      
+      - name: Run permissions demo
+        run: ./playground-linux/permisos.sh
+      
+      - name: Run cron demo
+        run: ./playground-linux/cron_demo.sh
+      
+      - name: Run pipes demo
+        run: ./playground-linux/pipes.sh
+
+  cron-simulation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Make scripts executable
+        run: chmod +x playground-linux/*.sh
+      
+      - name: Simulate CRON task
+        run: |
+          echo "=== Simulando tarea programada CRON ==="
+          ./playground-linux/cron_demo.sh
+          echo "=== Simulación CRON completada ==="
+
+  deploy-simulation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Make scripts executable
+        run: chmod +x playground-linux/*.sh
+      
+      - name: Simulate deployment
+        run: |
+          echo "=== Iniciando simulación de deployment ==="
+          ./playground-linux/permisos.sh
+          echo "=== Simulación de deployment completada ==="
+
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Make scripts executable
+        run: chmod +x playground-linux/*.sh
+      
+      - name: Run security checks
+        run: |
+          echo "=== Ejecutando scan de seguridad ==="
+          ls -la playground-linux/
+          echo "=== Verificando permisos de archivos ==="
+          find playground-linux/ -name "*.sh" -exec ls -l {} \;
+          echo "=== Scan de seguridad completado ==="

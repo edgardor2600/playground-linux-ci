@@ -2,7 +2,7 @@
 # permisos.sh - Muestra y cambia permisos
 
 if [ $# -lt 1 ]; then
-  echo "Uso: $0 <archivo> [nuevo_permiso]"
+  echo "Uso: $0 <errores.txt> [nuevo_permiso]"
   exit 1
 fi
 

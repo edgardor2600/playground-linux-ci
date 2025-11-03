@@ -18,19 +18,19 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Make scripts executable
-        run: chmod +x playground-linux/*.sh
+        run: chmod +x ./*.sh
       
       - name: Run grep demo
-        run: ./playground-linux/grep_demo.sh "devops" playground-linux/errores.txt
+        run: ./grep_demo.sh "devops" errores.txt
       
       - name: Run permissions demo
-        run: ./playground-linux/permisos.sh playground-linux/errores.txt 644
+        run: ./permisos.sh errores.txt 644
       
       - name: Run cron demo
-        run: ./playground-linux/cron_demo.sh
+        run: ./cron_demo.sh
       
       - name: Run pipes demo
-        run: ./playground-linux/pipes.sh
+        run: ./pipes.sh
 
   cron-simulation:
     runs-on: ubuntu-latest
@@ -39,12 +39,12 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Make scripts executable
-        run: chmod +x playground-linux/*.sh
+        run: chmod +x ./*.sh
       
       - name: Simulate CRON task
         run: |
           echo "=== Simulando tarea programada CRON ==="
-          ./playground-linux/cron_demo.sh
+          ./cron_demo.sh
           echo "=== Simulación CRON completada ==="
 
   deploy-simulation:
@@ -54,12 +54,12 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Make scripts executable
-        run: chmod +x playground-linux/*.sh
+        run: chmod +x ./*.sh
       
       - name: Simulate deployment
         run: |
           echo "=== Iniciando simulación de deployment ==="
-          ./playground-linux/permisos.sh
+          ./permisos.sh backup.sh 755
           echo "=== Simulación de deployment completada ==="
 
   security-scan:
@@ -69,12 +69,12 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Make scripts executable
-        run: chmod +x playground-linux/*.sh
+        run: chmod +x ./*.sh
       
       - name: Run security checks
         run: |
           echo "=== Ejecutando scan de seguridad ==="
-          ls -la playground-linux/
+          ls -la .
           echo "=== Verificando permisos de archivos ==="
-          find playground-linux/ -name "*.sh" -exec ls -l {} \;
+          find . -name "*.sh" -exec ls -l {} \;
           echo "=== Scan de seguridad completado ==="

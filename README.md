@@ -51,29 +51,6 @@ Este es un entorno de laboratorio para aprender conceptos fundamentales de Linux
 - **Eficiencia**: Procesamiento sin archivos intermedios
 - **Uso en CI/CD**: Procesamiento de logs, métricas y reportes
 
-## 🎯 Conceptos CI/CD Implementados
-
-### Automatización
-- ✅ Scripts ejecutables sin intervención manual
-- ✅ Manejo de errores con exit codes
-- ✅ Validación de parámetros de entrada
-
-### Reproducibilidad
-- ✅ Timestamps para tracking
-- ✅ Comandos estándar de Unix
-- ✅ Configuración declarativa
-
-### Monitoring y Logging
-- ✅ Logging automático de operaciones
-- ✅ Output estructurado para parsing
-- ✅ Archivos de log para análisis
-
-### Seguridad
-- ✅ Validación de inputs
-- ✅ Gestión de permisos
-- ✅ Principio de menor privilegio
-
-## 🔧 Configuración del Entorno
 
 ### Archivos de Datos
 - `log.txt`: Logs de prueba para testing
